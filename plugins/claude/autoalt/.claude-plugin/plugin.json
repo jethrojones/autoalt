@@ -1,0 +1,14 @@
+{
+  "name": "autoalt",
+  "displayName": "AutoAlt",
+  "version": "0.1.0",
+  "description": "Catch and fix missing image alt text while you code. Ships a skill that teaches Claude to write good alt descriptions, a post-edit hook that flags <img>/Markdown images lacking useful alt text, and a /autoalt:check command.",
+  "author": {
+    "name": "AutoAlt",
+    "url": "https://github.com/jethrojones/autoalt"
+  },
+  "homepage": "https://github.com/jethrojones/autoalt",
+  "repository": "https://github.com/jethrojones/autoalt",
+  "license": "MIT",
+  "keywords": ["accessibility", "a11y", "alt-text", "images", "wcag", "screen-reader"]
+}

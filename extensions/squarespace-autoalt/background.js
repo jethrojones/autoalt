@@ -15,14 +15,14 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         sendResponse({ ok: true, altText });
       })
       .catch((error) => sendResponse({ ok: false, error: error.message }));
-    return true; // Keep message channel open
+    return true;
   }
 
   if (message?.type === "AUTOALT_TEST_API") {
     testApiKey(message.provider, message.apiKey)
       .then(() => sendResponse({ ok: true }))
       .catch((error) => sendResponse({ ok: false, error: error.message }));
-    return true; // Keep message channel open
+    return true;
   }
 
   return false;
@@ -45,8 +45,8 @@ async function generateAltText(imageDataUrl) {
 
   const settings = await chrome.storage.local.get({
     provider: "gemini",
-    apiKey: "", // OpenAI key
-    geminiApiKey: "", // Gemini key
+    apiKey: "",
+    geminiApiKey: "",
     model: "",
     style: "concise",
     customPrompt: ""
@@ -59,7 +59,6 @@ async function generateAltText(imageDataUrl) {
     throw new Error(`Please add a ${provider === "gemini" ? "Gemini" : "OpenAI"} API key in the AutoAlt extension popup or options.`);
   }
 
-  // Construct Prompt
   let prompt = STYLE_PROMPTS[settings.style || "concise"];
   if (settings.style === "custom") {
     prompt += settings.customPrompt || "Describe this image objectively.";
@@ -165,8 +164,8 @@ async function callOpenAI(imageDataUrl, prompt, apiKey, model) {
 
 function cleanAltText(text) {
   return text.trim()
-    .replace(/^["']|["']$/g, "") // Strip surrounding quotes
-    .replace(/^alt text:\s*/i, "") // Strip helper prefixes
+    .replace(/^["']|["']$/g, "")
+    .replace(/^alt text:\s*/i, "")
     .replace(/^description:\s*/i, "")
     .slice(0, 280);
 }
@@ -177,7 +176,6 @@ async function testApiKey(provider, apiKey) {
   }
 
   if (provider === "gemini") {
-    // Send a minimal prompt to Gemini to test key connectivity
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${DEFAULT_GEMINI_MODEL}:generateContent?key=${apiKey}`;
     const response = await fetch(url, {
       method: "POST",
@@ -191,7 +189,6 @@ async function testApiKey(provider, apiKey) {
       throw new Error(data?.error?.message || "Invalid Gemini API Key");
     }
   } else {
-    // Send a minimal request to OpenAI
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {

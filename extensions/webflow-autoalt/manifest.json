@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "AutoAlt for X",
-  "version": "0.2.0",
-  "description": "Premium AI-powered alternative descriptions for Twitter/X post drafts automatically using Gemini or OpenAI.",
+  "name": "AutoAlt for Webflow",
+  "version": "0.1.0",
+  "description": "Premium AI-powered alternative descriptions for Webflow Designer and Asset Managers automatically using Gemini or OpenAI.",
   "permissions": ["storage", "activeTab"],
   "host_permissions": [
-    "https://x.com/*",
-    "https://twitter.com/*",
+    "https://webflow.com/*",
+    "https://*.webflow.com/*",
+    "https://*.webflow.io/*",
     "https://api.openai.com/*",
     "https://generativelanguage.googleapis.com/*"
   ],
@@ -29,7 +30,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "matches": [
+        "https://webflow.com/*",
+        "https://*.webflow.com/*",
+        "https://*.webflow.io/*"
+      ],
       "js": ["content.js"],
       "css": ["content.css"],
       "run_at": "document_idle"

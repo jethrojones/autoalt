@@ -1,0 +1,81 @@
+/* AutoAlt Button - Sharp, crisp Squarespace designer style */
+.autoalt-button {
+  align-items: center;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font: 700 11px/1.2 system-ui, -apple-system, sans-serif;
+  height: 28px;
+  justify-content: center;
+  margin: 6px 0;
+  padding: 0 10px;
+  white-space: nowrap;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.autoalt-button:hover {
+  background: #222222;
+  border-color: #ffffff;
+}
+
+.autoalt-button[disabled] {
+  cursor: wait;
+  opacity: 0.6;
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Premium Monochrome Toast - Bottom-left crisp card */
+.autoalt-toast {
+  align-items: center;
+  background: rgba(17, 17, 17, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  bottom: 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  display: flex;
+  font: 600 13px/1.35 system-ui, -apple-system, sans-serif;
+  inset-inline-start: 24px;
+  max-width: min(380px, calc(100vw - 48px));
+  padding: 12px 18px;
+  position: fixed;
+  z-index: 2147483647;
+  gap: 12px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.autoalt-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.autoalt-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: autoalt-spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes autoalt-spin {
+  to { transform: rotate(360deg); }
+}
+
+.autoalt-toast-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  line-height: 1;
+}

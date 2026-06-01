@@ -1,0 +1,83 @@
+/* AutoAlt Button - Sleek Webflow Designer style with active blue outline */
+.autoalt-button {
+  align-items: center;
+  background: #2b3547;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: #f1f3f9;
+  cursor: pointer;
+  display: inline-flex;
+  font: 600 11px/1.2 system-ui, -apple-system, sans-serif;
+  height: 26px;
+  justify-content: center;
+  margin: 6px 0;
+  padding: 0 10px;
+  white-space: nowrap;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.autoalt-button:hover {
+  background: #364259;
+  border-color: #4353ff;
+  color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(67, 83, 255, 0.2);
+}
+
+.autoalt-button[disabled] {
+  cursor: wait;
+  opacity: 0.6;
+  background: #1a1e27;
+  border-color: rgba(255, 255, 255, 0.05);
+  color: #5f6368;
+}
+
+/* Premium Neon-Slate Toast - Bottom-left glowing card */
+.autoalt-toast {
+  align-items: center;
+  background: rgba(25, 26, 31, 0.9);
+  border: 1px solid rgba(67, 83, 255, 0.35);
+  border-radius: 6px;
+  bottom: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 12px rgba(67, 83, 255, 0.15);
+  color: #f1f3f9;
+  display: flex;
+  font: 600 13px/1.35 system-ui, -apple-system, sans-serif;
+  inset-inline-start: 24px;
+  max-width: min(380px, calc(100vw - 48px));
+  padding: 12px 18px;
+  position: fixed;
+  z-index: 2147483647;
+  gap: 12px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.autoalt-toast.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.autoalt-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(67, 83, 255, 0.25);
+  border-top-color: #4353ff;
+  border-radius: 50%;
+  animation: autoalt-spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes autoalt-spin {
+  to { transform: rotate(360deg); }
+}
+
+.autoalt-toast-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  line-height: 1;
+}
