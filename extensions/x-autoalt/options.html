@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AutoAlt Options</title>
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <main>
+      <h1>AutoAlt</h1>
+      <form id="options-form">
+        <label>
+          OpenAI API key
+          <input id="api-key" name="apiKey" type="password" autocomplete="off" placeholder="sk-...">
+        </label>
+
+        <label>
+          Model
+          <input id="model" name="model" type="text" autocomplete="off" value="gpt-5-mini">
+        </label>
+
+        <button type="submit">Save settings</button>
+        <p id="status" role="status"></p>
+      </form>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>

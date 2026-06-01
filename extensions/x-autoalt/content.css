@@ -1,0 +1,38 @@
+.autoalt-button {
+  align-items: center;
+  background: #0f1419;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font: 700 13px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  height: 32px;
+  justify-content: center;
+  margin-inline-start: 8px;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.autoalt-button:hover {
+  background: #272c30;
+}
+
+.autoalt-button[disabled] {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.autoalt-toast {
+  background: #0f1419;
+  border-radius: 8px;
+  bottom: 24px;
+  box-shadow: 0 8px 24px rgba(15, 20, 25, 0.24);
+  color: #fff;
+  font: 500 14px/1.35 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  inset-inline-start: 24px;
+  max-width: min(360px, calc(100vw - 48px));
+  padding: 12px 14px;
+  position: fixed;
+  z-index: 2147483647;
+}

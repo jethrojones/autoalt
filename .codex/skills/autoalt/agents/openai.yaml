@@ -1,0 +1,4 @@
+interface:
+  display_name: "AutoAlt"
+  short_description: "Ensure published images have useful alt text."
+  default_prompt: "Review this project for images that need alt descriptions, add accurate alt text where possible, and run the AutoAlt checker."
