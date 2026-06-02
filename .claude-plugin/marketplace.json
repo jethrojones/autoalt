@@ -1,0 +1,18 @@
+{
+  "name": "autoalt",
+  "owner": {
+    "name": "AutoAlt",
+    "url": "https://github.com/jethrojones/autoalt"
+  },
+  "description": "Tools that make adding image alt descriptions the effortless path.",
+  "plugins": [
+    {
+      "name": "autoalt",
+      "source": "./plugins/claude/autoalt",
+      "description": "Catch and fix missing image alt text while you code: an accessibility skill, a post-edit hook, and a /autoalt:check command.",
+      "version": "0.1.0",
+      "license": "MIT",
+      "keywords": ["accessibility", "a11y", "alt-text", "images", "wcag"]
+    }
+  ]
+}

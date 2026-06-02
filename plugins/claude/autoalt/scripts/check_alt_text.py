@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Check project files for images without useful alt text."""
+"""Check project files for images without useful alt text.
+
+This is the shared AutoAlt checker, vendored into the Claude Code plugin so the
+plugin is self-contained and installable on its own. It mirrors
+`.codex/skills/autoalt/scripts/check_alt_text.py` at the repo root.
+"""
 
 from __future__ import annotations
 

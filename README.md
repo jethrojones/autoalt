@@ -36,6 +36,7 @@ Today, this repo includes early MVPs:
 - `extensions/x-autoalt`: a browser extension for X.com/Twitter compose screens. It uses the logged-in user's normal account session, generates a description for an uploaded image, opens X's alt-text dialog, and inserts the generated description.
 - `plugins/wordpress/autoalt`: a WordPress plugin that generates alt text for Media Library uploads when the image does not already have alt text.
 - `.codex/skills/autoalt`: a repo-local Codex skill that teaches coding agents to preserve image accessibility while building.
+- `plugins/claude/autoalt`: a downloadable Claude Code plugin (skill + post-edit hook + `/autoalt:check` command) that catches missing alt text while you code.
 - `.githooks/pre-commit`: a developer hook that catches missing or placeholder alt text before code is committed.
 
 Future targets include Bluesky, Mastodon, Instagram workflows, Shopify, Webflow, Notion, Ghost, Drupal, static-site generators, design handoff tools, and anywhere else images make their way into public view.
@@ -72,6 +73,27 @@ The extension keeps the API key in browser extension local storage and never ask
 Copy or symlink `plugins/wordpress/autoalt` into `wp-content/plugins/autoalt`, activate `AutoAlt`, then add an API key under `Settings -> AutoAlt`.
 
 When enabled, the plugin watches new image uploads. If the image has no existing alt text, it sends the local image file to the configured model and saves the generated description to `_wp_attachment_image_alt`.
+
+## Use The Claude Code Plugin
+
+If you build with Claude Code, install the plugin so Claude writes alt text as it
+edits and warns you when an image is missing one.
+
+```text
+/plugin marketplace add jethrojones/autoalt
+/plugin install autoalt@autoalt
+```
+
+It adds:
+
+- the `autoalt` skill, which teaches Claude how to write honest, specific alt text,
+- a `PostToolUse` hook that flags images with missing or placeholder alt text in
+  any file Claude edits (HTML, JSX/TSX, Markdown/MDX, Astro, Vue, Svelte) without
+  blocking the edit,
+- a `/autoalt:check` command that scans staged files or paths you pass.
+
+The plugin is fully local and makes no network calls. See
+`plugins/claude/autoalt/README.md` for details.
 
 ## Use The Agent Hook
 
@@ -119,9 +141,17 @@ Run the current checks:
 
 ```sh
 python3 .codex/skills/autoalt/scripts/check_alt_text.py .
+python3 plugins/claude/autoalt/scripts/check_alt_text.py .
 node --check extensions/x-autoalt/background.js
 node --check extensions/x-autoalt/content.js
 node --check extensions/x-autoalt/options.js
+```
+
+Validate the Claude Code plugin and marketplace manifests:
+
+```sh
+claude plugin validate ./plugins/claude/autoalt
+claude plugin validate .
 ```
 
 If you are working on the WordPress plugin, run PHP lint in an environment with PHP installed:
